@@ -1,4 +1,4 @@
-import { IEnemyHealth, IGame } from '../types/game';
+import { EnemyHealth, InventoryItem } from '../types/game';
 
 export function isString(candidate: unknown): candidate is string {
     return typeof candidate === 'string';
@@ -20,15 +20,14 @@ export function isNotNullOrUndefined<T>(candidate: unknown): candidate is T {
     return candidate !== undefined && candidate !== null;
 }
 
-export function isGameData(candidate: unknown): candidate is IGame {
-    // eslint-disable-next-line @typescript-eslint/ban-types
-    if (isNotNullOrUndefined<object>(candidate) && typeof candidate === 'object') {
-        return 'PlayerMaxHealth' in candidate;
-    } else {
-        return false;
-    }
+export function isEnemyHealth(candidate: unknown): candidate is EnemyHealth[] {
+    return Array.isArray(candidate) && typeof candidate[0] === 'object' && 'CurrentHP' in candidate[0];
 }
 
-export function isEnemyHealth(candidate: unknown): candidate is IEnemyHealth[] {
-    return Array.isArray(candidate) && typeof candidate[0] === 'object' && 'CurrentHP' in candidate[0];
+export function isInventoryItem(candidate: unknown): candidate is InventoryItem {
+    return isNotNullOrUndefined<object>(candidate) && 'SlotPosition' in candidate;
+}
+
+export function isArrayOfInventoryItems(candidate: unknown): candidate is InventoryItem[] {
+    return Array.isArray(candidate) && typeof candidate[0] === 'object' && 'SlotPosition' in candidate[0];
 }

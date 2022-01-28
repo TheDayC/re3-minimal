@@ -1,6 +1,6 @@
 import { createSelector } from 'reselect';
 
-import { selectGameData } from '../../store/selectors/game';
+import { selectGameData } from '../../store/slices/game';
 
 const selector = createSelector([selectGameData], game => ({
     currentHealth: game.currentHealth || 7000,

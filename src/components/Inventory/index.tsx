@@ -1,19 +1,37 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { Grid, GridItem } from '@chakra-ui/react';
+import { Grid } from '@chakra-ui/react';
+import {sortBy, slice} from 'lodash';
 
 import selector from './selector';
+import Empty from './Empty';
+import Item from './Item';
+import Weapon from './Weapon';
 
-const showInventory = Boolean(process.env.REACT_APP_INVENTORY === 'true');
+const Inventory: React.FC = () => {
+    const { inventory, inventoryCount } = useSelector(selector);
+    const showInventory = Boolean(process.env.REACT_APP_INVENTORY === 'true');
 
-const EnemyHealth: React.FC = () => {
-    const { enemyHealth } = useSelector(selector);
-
-    if (!showInventory) {
+    if (!showInventory || !inventory) {
         return null;
     }
 
-    return ();
+    const sortedInventory = slice(sortBy(inventory, (item) => item.slotPosition), 0, inventoryCount);
+
+    return (
+        <Grid templateColumns="repeat(4, 1fr)" gap={2}>
+            {sortedInventory
+                .map((item, i) => {
+                    if (item.isEmptySlot) {
+                        return <Empty key={`item-${i}`} />;
+                    } else if (item.isItem) {
+                        return <Item key={`item-${i}`} />;
+                    } else if (item.isWeapon) {
+                        return <Weapon key={`item-${i}`} />;
+                    }
+                })}
+        </Grid>
+    );
 };
 
-export default EnemyHealth;
+export default Inventory;

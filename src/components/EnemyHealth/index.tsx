@@ -2,42 +2,35 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import { Flex, Progress, Text } from '@chakra-ui/react';
 
+import { healthPercentage } from '../../helpers/game';
 import selector from './selector';
 import './index.css';
-import { IEnemyHealth } from '../../types/game';
-import { healthPercentage } from '../../helpers/game';
 
 const EnemyHealth: React.FC = () => {
-    const { enemyHealth } = useSelector(selector);
+    const { enemies } = useSelector(selector);
 
-    if (enemyHealth) {
-        return (
-            <Flex direction="column">
-                {enemyHealth.map((eh: IEnemyHealth, i: number) => {
-                    const hp = healthPercentage(eh.CurrentHP, eh.MaximumHP, 2);
+    if (!enemies) return null;
 
-                    return (
-                        <div className="ehWrapper" key={`enemy-health-${i}`}>
-                            <Text className="ehLabel">Enemy: {hp}%</Text>
-                            <Progress
-                                value={eh.CurrentHP || 0}
-                                colorScheme="red"
-                                height="24px"
-                                isAnimated={true}
-                                min={0}
-                                max={eh.MaximumHP || 1000}
-                                className="enemyHealthBar"
-                                marginBottom="10px"
-                                flexDirection="column"
-                            />
-                        </div>
-                    );
-                })}
-            </Flex>
-        );
-    } else {
-        return null;
-    }
+    return (
+        <Flex direction="column">
+            {enemies.map((enemy, i: number) => (
+                <div className="ehWrapper" key={`enemy-health-${i}`}>
+                    <Text className="ehLabel">Enemy: {healthPercentage(enemy.CurrentHP, enemy.MaximumHP, 2)}%</Text>
+                    <Progress
+                        value={enemy.CurrentHP || 0}
+                        colorScheme="red"
+                        height="24px"
+                        isAnimated={true}
+                        min={0}
+                        max={enemy.MaximumHP || 1000}
+                        className="enemyHealthBar"
+                        marginBottom="10px"
+                        flexDirection="column"
+                    />
+                </div>
+            ))}
+        </Flex>
+    );
 };
 
 export default EnemyHealth;

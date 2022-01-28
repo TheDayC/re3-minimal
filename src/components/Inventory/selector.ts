@@ -1,9 +1,10 @@
 import { createSelector } from 'reselect';
 
-import { selectGameData } from '../../store/selectors/game';
+import { selectGameData } from '../../store/slices/game';
 
 const selector = createSelector([selectGameData], game => ({
-    enemyHealth: game.enemyHealth ? game.enemyHealth.filter(e => e.IsAlive) : null
+    inventory: game.inventory,
+    inventoryCount: game.inventoryCount
 }));
 
 export default selector;

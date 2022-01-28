@@ -1,5 +1,5 @@
-import { IGameState } from './state';
+import { GameState } from './state';
 
 export interface IAppState {
-    game: IGameState;
+    game: GameState;
 }
