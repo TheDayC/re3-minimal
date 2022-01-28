@@ -1,5 +1,5 @@
-import {StoreGameActionType} from '../types/actions';
-import {GameActionTypes} from '../enums/actions';
+import { StoreGameActionType } from '../types/actions';
+import { GameActionTypes } from '../enums/actions';
 import { IGameState } from '../types/state';
 
 // Actions

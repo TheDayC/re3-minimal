@@ -8,14 +8,14 @@ import { IEnemyHealth } from '../../types/game';
 import { healthPercentage } from '../../helpers/game';
 
 const EnemyHealth: React.FC = () => {
-    const {enemyHealth} = useSelector(selector);
+    const { enemyHealth } = useSelector(selector);
 
     if (enemyHealth) {
         return (
             <Flex direction="column">
                 {enemyHealth.map((eh: IEnemyHealth, i: number) => {
                     const hp = healthPercentage(eh.CurrentHP, eh.MaximumHP, 2);
-                
+
                     return (
                         <div className="ehWrapper" key={`enemy-health-${i}`}>
                             <Text className="ehLabel">Enemy: {hp}%</Text>
@@ -31,13 +31,13 @@ const EnemyHealth: React.FC = () => {
                                 flexDirection="column"
                             />
                         </div>
-                    )
+                    );
                 })}
             </Flex>
         );
     } else {
         return null;
     }
-}
+};
 
 export default EnemyHealth;

@@ -1,4 +1,4 @@
-import {IGameState} from './state';
+import { IGameState } from './state';
 
 export interface IAppState {
     game: IGameState;

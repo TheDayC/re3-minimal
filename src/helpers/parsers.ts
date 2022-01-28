@@ -48,7 +48,6 @@ export function parseAsType<T>(isExpectedType: ITypeGuard<T>): IParser<T> {
     };
 }
 
-
 export const parseAsString = parseAsType(isString);
 
 export const parseAsNumber = parseAsType(isNumber);

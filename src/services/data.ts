@@ -10,12 +10,12 @@ export function getData(): void {
         body: {},
         method: 'GET'
     };
-    
+
     apiFetch(`http://${process.env.REACT_APP_ADDRESS}:${process.env.REACT_APP_PORT}/`, options).then(
         res => {
             if (res) {
                 const gameData = safelyTransform<IGameState | null>(res, parseGameDataResponse);
-                
+
                 if (gameData) {
                     store.dispatch(storeGameData(gameData));
                 }
@@ -23,5 +23,4 @@ export function getData(): void {
         },
         error => console.warn(error.message)
     );
-
 }

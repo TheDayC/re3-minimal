@@ -1,4 +1,4 @@
-import {IGame} from '../types/game';
+import { IGame } from '../types/game';
 
 export function createGameDataDefault(): IGame {
     return {

@@ -6,15 +6,19 @@ import selector from './selector';
 import './index.css';
 
 const DA: React.FC = () => {
-    const { rank, rankScore} = useSelector(selector);
+    const { rank, rankScore } = useSelector(selector);
 
     return (
         <Flex className="daWrapper">
-            <Text className="daLabel"><b>DA Score:</b> {rankScore}</Text>
+            <Text className="daLabel">
+                <b>DA Score:</b> {rankScore}
+            </Text>
             <Spacer />
-            <Text className="daLabel"><b>DA Rank:</b> {rank}</Text>
+            <Text className="daLabel">
+                <b>DA Rank:</b> {rank}
+            </Text>
         </Flex>
     );
-}
+};
 
 export default DA;

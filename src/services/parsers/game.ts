@@ -1,5 +1,5 @@
 import { safelyParse, parseAsNumber, parseAsEnemyHealth } from '../../helpers/parsers';
-import { IGameState} from '../../store/types/state';
+import { IGameState } from '../../store/types/state';
 
 export function parseGameDataResponse(res: unknown): IGameState {
     return {

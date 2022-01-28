@@ -21,6 +21,6 @@ const App: React.FC = () => {
             <EnemyHealth />
         </div>
     );
-}
+};
 
 export default App;
