@@ -1,6 +1,6 @@
 {
-  "name": "re8-minimal-typed",
-  "version": "1.0.1",
+  "name": "re3-minimal-typed",
+  "version": "1.0.0",
   "private": true,
   "homepage": ".",
   "dependencies": {
