@@ -1,4 +1,4 @@
-import { isString, isNumber, isBoolean, isArray, isGameData, isEnemyHealth } from './typeguards';
+import { isString, isNumber, isBoolean, isArray, isEnemyHealth, isInventoryItem, isArrayOfInventoryItems } from './typeguards';
 import { ITypeGuard, IParser } from '../types/validation';
 
 export function safelyParse<T, F>(data: unknown, property: string, parse: IParser<T>, fallback: F, logErrorOnUndefined: boolean = true): T | F {
@@ -56,6 +56,6 @@ export const parseAsBoolean = parseAsType(isBoolean);
 
 export const parseAsArray = parseAsType(isArray);
 
-export const parseAsGameData = parseAsType(isGameData);
-
 export const parseAsEnemyHealth = parseAsType(isEnemyHealth);
+export const parseAsInventoryItem = parseAsType(isInventoryItem);
+export const parseAsArrayOfInventoryItems = parseAsType(isArrayOfInventoryItems);

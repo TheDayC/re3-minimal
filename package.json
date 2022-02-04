@@ -1,5 +1,5 @@
 {
-  "name": "re3-minimal-typed",
+  "name": "re3-minimal",
   "version": "1.0.0",
   "private": true,
   "homepage": ".",
@@ -7,6 +7,7 @@
     "@chakra-ui/react": "^1.6.2",
     "@emotion/react": "^11.4.0",
     "@emotion/styled": "^11.3.0",
+    "@reduxjs/toolkit": "^1.7.1",
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
@@ -15,6 +16,7 @@
     "@types/react": "^17.0.0",
     "@types/react-dom": "^17.0.0",
     "framer-motion": "^4.1.17",
+    "lodash": "^4.17.21",
     "node-fetch": "^2.6.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",

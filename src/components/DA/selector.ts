@@ -1,10 +1,10 @@
 import { createSelector } from 'reselect';
 
-import { selectGameData } from '../../store/selectors/game';
+import { selectGameData } from '../../store/slices/game';
 
 const selector = createSelector([selectGameData], game => ({
-    rank: game.rank || 0,
-    rankScore: game.rankScore || 0
+    rank: game.rank,
+    rankScore: game.rankScore
 }));
 
 export default selector;

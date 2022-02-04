@@ -1,10 +1,12 @@
-import { IEnemyHealth } from '../../types/game';
+import { EnemyHealth, InventoryItem } from '../../types/game';
 
-export interface IGameState {
-    maxHealth: number | null;
-    currentHealth: number | null;
-    enemyHealth: IEnemyHealth[] | null;
-    lei: number | null;
-    rank: number | null;
-    rankScore: number | null;
+export interface GameState {
+    maxHealth: number;
+    currentHealth: number;
+    enemyHealth: EnemyHealth[] | null;
+    lei: number;
+    rank: number;
+    rankScore: number;
+    inventoryCount: number;
+    inventory: InventoryItem[] | null;
 }

@@ -5,7 +5,7 @@ import { ChakraProvider } from '@chakra-ui/react';
 
 import './index.css';
 import App from './App';
-import store from './store';
+import { store } from './store';
 import theme from './theme';
 
 ReactDOM.render(
