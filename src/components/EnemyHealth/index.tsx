@@ -12,8 +12,8 @@ const EnemyHealth: React.FC = () => {
     if (!enemies) return null;
 
     return (
-        <Flex direction="column">
-            {enemies.map((enemy, i: number) => (
+        <Flex direction="column" marginTop="12px">
+            {enemies.slice(0, 5).map((enemy, i: number) => (
                 <div className="ehWrapper" key={`enemy-health-${i}`}>
                     <Text className="ehLabel">Enemy: {healthPercentage(enemy.CurrentHP, enemy.MaximumHP, 2)}%</Text>
                     <Progress
