@@ -23,7 +23,7 @@ const Inventory: React.FC = () => {
     );
 
     return (
-        <Grid templateColumns="repeat(4, 1fr)" gap={2} maxW="408px">
+        <Grid templateColumns="repeat(4, 1fr)" gap={2} w="100%">
             {sortedInventory.map((item, i) => {
                 if (item.isEmptySlot) {
                     return <Empty key={`item-${i}`} />;

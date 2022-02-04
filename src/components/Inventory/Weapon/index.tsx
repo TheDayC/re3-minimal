@@ -11,7 +11,7 @@ interface WeaponProps {
 }
 
 const Weapon: React.FC<WeaponProps> = ({ quantity, weaponId, attachmentId }) => (
-    <GridItem w="24" h="24" bg="#1d1e1e" color="#ffffff" position="relative" borderRadius="3px" p="3px" border="1px solid #fff">
+    <GridItem w="100%" h="24" bg="#1d1e1e" color="#ffffff" position="relative" borderRadius="5px" p="1px" border="2px solid #fff">
         <img src={selectWeaponImage(weaponId, attachmentId)} className="weapon" />
         <div className="quantity">{quantity}</div>
     </GridItem>

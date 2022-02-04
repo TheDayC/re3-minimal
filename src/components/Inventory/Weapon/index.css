@@ -3,6 +3,7 @@
     display: block;
     height: 100%;
     z-index: 10;
+    margin: auto;
 }
 
 .quantity {
