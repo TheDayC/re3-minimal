@@ -14,7 +14,7 @@ const App: React.FC = () => {
 
     const getData = () => {
         dispatch(fetchData());
-    }
+    };
 
     useEffect(() => {
         getData();

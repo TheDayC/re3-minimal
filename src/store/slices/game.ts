@@ -1,4 +1,4 @@
-import { createSlice, PayloadAction, createAsyncThunk} from '@reduxjs/toolkit';
+import { createSlice, PayloadAction, createAsyncThunk } from '@reduxjs/toolkit';
 
 import type { RootState } from '..';
 import { apiFetch } from '../../helpers/fetch';
@@ -19,23 +19,20 @@ const initialState: GameState = {
 
 const options = { body: {}, method: 'GET' };
 
-export const fetchData = createAsyncThunk(
-    'game/fetchData',
-    async (): Promise<GameState | null> => {
-        const res = await apiFetch(`http://${process.env.REACT_APP_ADDRESS}:${process.env.REACT_APP_PORT}/`, options);
-        
-        return safelyTransform<GameState>(res, transformGameDataResponse);
-    }
-);
+export const fetchData = createAsyncThunk('game/fetchData', async (): Promise<GameState | null> => {
+    const res = await apiFetch(`http://${process.env.REACT_APP_ADDRESS}:${process.env.REACT_APP_PORT}/`, options);
+
+    return safelyTransform<GameState>(res, transformGameDataResponse);
+});
 
 export const gameSlice = createSlice({
     name: 'game',
     initialState,
     reducers: {},
-    extraReducers: (builder) => {
+    extraReducers: builder => {
         builder.addCase(fetchData.fulfilled, (state, action) => {
             if (action.payload) {
-                const {maxHealth, currentHealth, enemyHealth, lei, rank, rankScore, inventory, inventoryCount} = action.payload;
+                const { maxHealth, currentHealth, enemyHealth, lei, rank, rankScore, inventory, inventoryCount } = action.payload;
 
                 state.maxHealth = maxHealth;
                 state.currentHealth = currentHealth;
@@ -46,7 +43,7 @@ export const gameSlice = createSlice({
                 state.inventoryCount = inventoryCount;
                 state.inventory = inventory;
             }
-        })
+        });
     }
 });
 

@@ -24,7 +24,7 @@ export function transformInventory(data: InventoryItem[] | null): InventoryItem[
             isEmptySlot: safelyParse(item, 'IsEmptySlot', parseAsBoolean, false),
             isItem: safelyParse(item, 'IsItem', parseAsBoolean, false),
             isWeapon: safelyParse(item, 'IsWeapon', parseAsBoolean, false),
-            itemID: safelyParse(item, 'ItemID', parseAsNumber, 0), 
+            itemID: safelyParse(item, 'ItemID', parseAsNumber, 0),
             quantity: safelyParse(item, 'Quantity', parseAsNumber, 0),
             slotPosition: safelyParse(item, 'SlotPosition', parseAsNumber, 0),
             weaponID: safelyParse(item, 'WeaponID', parseAsNumber, 0)

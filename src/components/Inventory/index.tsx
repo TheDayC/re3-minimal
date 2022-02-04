@@ -1,7 +1,7 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { Grid } from '@chakra-ui/react';
-import {sortBy, slice} from 'lodash';
+import { sortBy, slice } from 'lodash';
 
 import selector from './selector';
 import Empty from './Empty';
@@ -16,20 +16,23 @@ const Inventory: React.FC = () => {
         return null;
     }
 
-    const sortedInventory = slice(sortBy(inventory, (item) => item.slotPosition), 0, inventoryCount);
+    const sortedInventory = slice(
+        sortBy(inventory, item => item.slotPosition),
+        0,
+        inventoryCount
+    );
 
     return (
         <Grid templateColumns="repeat(4, 1fr)" gap={2} maxW="408px">
-            {sortedInventory
-                .map((item, i) => {
-                    if (item.isEmptySlot) {
-                        return <Empty key={`item-${i}`} />;
-                    } else if (item.isItem) {
-                        return <Item itemId={item.itemID} quantity={item.quantity} key={`item-${i}`} />;
-                    } else if (item.isWeapon) {
-                        return <Weapon weaponId={item.weaponID} attachmentId={item.attachments} quantity={item.quantity} key={`item-${i}`} />;
-                    }
-                })}
+            {sortedInventory.map((item, i) => {
+                if (item.isEmptySlot) {
+                    return <Empty key={`item-${i}`} />;
+                } else if (item.isItem) {
+                    return <Item itemId={item.itemID} quantity={item.quantity} key={`item-${i}`} />;
+                } else if (item.isWeapon) {
+                    return <Weapon weaponId={item.weaponID} attachmentId={item.attachments} quantity={item.quantity} key={`item-${i}`} />;
+                }
+            })}
         </Grid>
     );
 };

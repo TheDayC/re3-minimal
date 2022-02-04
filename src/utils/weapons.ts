@@ -20,7 +20,6 @@ import SamuraiEdge from '../images/weapons/SamuraiEdge.png';
 // Weapon ID 7 - InfiniteMUPHandgun
 import InfiniteMUPHandgun from '../images/weapons/InfiniteMUPHandgun.png';
 
-
 // Weapon ID 11 - InfiniteMUPHandgun
 import M3Shotgun from '../images/weapons/M3Shotgun.png';
 import M3Shotgun1 from '../images/weapons/M3Shotgun1.png';
@@ -73,7 +72,7 @@ import HandGrenade from '../images/weapons/HandGrenade.png';
 import FlashGrenade from '../images/weapons/FlashGrenade.png';
 
 export function selectWeaponImage(weaponId: number, attachmentId: number): string {
-    switch(weaponId) {
+    switch (weaponId) {
         case 1:
             return selectG19WithAttachmentImage(attachmentId);
         case 2:
@@ -114,7 +113,7 @@ export function selectWeaponImage(weaponId: number, attachmentId: number): strin
 }
 
 function selectG19WithAttachmentImage(attachmentId: number): string {
-    switch(attachmentId) {
+    switch (attachmentId) {
         case 1:
             return G19Handgun1;
         case 2:
@@ -135,7 +134,7 @@ function selectG19WithAttachmentImage(attachmentId: number): string {
 }
 
 function selectM3ShotgunWithAttachmentImage(attachmentId: number): string {
-    switch(attachmentId) {
+    switch (attachmentId) {
         case 1:
             return M3Shotgun1;
         case 2:
@@ -156,7 +155,7 @@ function selectM3ShotgunWithAttachmentImage(attachmentId: number): string {
 }
 
 function selectCQBRAssaultRifleWithAttachmentImage(attachmentId: number): string {
-    switch(attachmentId) {
+    switch (attachmentId) {
         case 1:
             return CQBRAssaultRifle1;
         case 2:
@@ -177,7 +176,7 @@ function selectCQBRAssaultRifleWithAttachmentImage(attachmentId: number): string
 }
 
 function selectLightningHawkWithAttachmentImage(attachmentId: number): string {
-    switch(attachmentId) {
+    switch (attachmentId) {
         case 1:
             return LightningHawk1;
         default:
