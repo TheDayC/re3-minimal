@@ -1,12 +1,20 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
-import { Grid, GridItem } from '@chakra-ui/react';
+import { GridItem } from '@chakra-ui/react';
 
-const Item: React.FC = () => {
+import { selectItemImage } from '../../../utils/items';
+import './index.css';
+
+interface ItemProps {
+    quantity: number;
+    itemId: number;
+}
+
+const Item: React.FC<ItemProps> = ({ itemId, quantity }) => {
 
     return (
-        <GridItem w="100%" h="10" bg="#1d1e1e" color="#ffffff">
-            I
+        <GridItem w="24" h="24" bg="#1d1e1e" color="#ffffff" position="relative" borderRadius="3px" p="3px">
+            <img src={selectItemImage(itemId)} className="weapon" />
+            <div className="quantity">{quantity}</div>
         </GridItem>
     );
 };
