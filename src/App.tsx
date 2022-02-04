@@ -25,8 +25,8 @@ const App: React.FC = () => {
         <div className="App">
             <Health />
             <DA />
-            <EnemyHealth />
             <Inventory />
+            <EnemyHealth />
         </div>
     );
 };
