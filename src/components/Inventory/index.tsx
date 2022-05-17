@@ -1,14 +1,12 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useSelector } from 'react-redux';
 import { Grid } from '@chakra-ui/react';
-import { sortBy, slice } from 'lodash';
 
 import selector from './selector';
 import Empty from './Empty';
 import Item from './Item';
 import Weapon from './Weapon';
-
-const twoSlotIds = [7,11,21,22,32,42,49];
+import { twoSlotItems, twoSlotWeapons } from '../../store/slices/game';
 
 const Inventory: React.FC = () => {
     const { inventory } = useSelector(selector);
@@ -24,9 +22,11 @@ const Inventory: React.FC = () => {
                 if (item.isEmptySlot) {
                     return <Empty key={`item-${i}`} />;
                 } else if (item.isItem) {
-                    return <Item itemId={item.itemID} quantity={item.quantity} key={`item-${i}`} />;
+                    const currentIsDouble = twoSlotItems.includes(item.itemID);
+
+                    return <Item itemId={item.itemID} quantity={item.quantity} colSpan={currentIsDouble ? 2 : 1} key={`item-${i}`} />;
                 } else if (item.isWeapon) {
-                    const currentIsDouble = twoSlotIds.includes(item.weaponID);
+                    const currentIsDouble = twoSlotWeapons.includes(item.weaponID);
 
                     return <Weapon weaponId={item.weaponID} attachmentId={item.attachments} quantity={item.quantity} colSpan={currentIsDouble ? 2 : 1} key={`item-${i}`} />;
                 }
