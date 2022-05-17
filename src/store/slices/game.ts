@@ -18,7 +18,8 @@ const initialState: GameState = {
     inventory: []
 };
 
-const twoSlotIds = [7,11,21,22,32,42,49];
+export const twoSlotWeapons = [7,11,21,22,32,42,49];
+export const twoSlotItems = [186];
 
 const options = { body: {}, method: 'GET' };
 
@@ -54,9 +55,10 @@ export const gameSlice = createSlice({
                     if (index === 0) return true;
 
                     const previous = sortedInventory[index - 1];
-                    const shouldRemove = previous.isWeapon && twoSlotIds.includes(previous.weaponID);
-                    
-                    if (shouldRemove) return false;
+
+                    if (previous.isWeapon && twoSlotWeapons.includes(previous.weaponID)) return false;
+
+                    if (previous.isItem && twoSlotItems.includes(previous.itemID)) return false;
 
                     return true;
                 });
