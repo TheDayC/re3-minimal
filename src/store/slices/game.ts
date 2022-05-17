@@ -1,4 +1,5 @@
-import { createSlice, PayloadAction, createAsyncThunk } from '@reduxjs/toolkit';
+import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import { sortBy, slice } from 'lodash';
 
 import type { RootState } from '..';
 import { apiFetch } from '../../helpers/fetch';
@@ -17,6 +18,8 @@ const initialState: GameState = {
     inventory: []
 };
 
+const twoSlotIds = [7,11,21,22,32,42,49];
+
 const options = { body: {}, method: 'GET' };
 
 export const fetchData = createAsyncThunk('game/fetchData', async (): Promise<GameState | null> => {
@@ -34,6 +37,12 @@ export const gameSlice = createSlice({
             if (action.payload) {
                 const { maxHealth, currentHealth, enemyHealth, lei, rank, rankScore, inventory, inventoryCount } = action.payload;
 
+                const sortedInventory = slice(
+                    sortBy(inventory, item => item.slotPosition),
+                    0,
+                    inventoryCount
+                );
+
                 state.maxHealth = maxHealth;
                 state.currentHealth = currentHealth;
                 state.enemyHealth = enemyHealth;
@@ -41,7 +50,16 @@ export const gameSlice = createSlice({
                 state.rank = rank;
                 state.rankScore = rankScore;
                 state.inventoryCount = inventoryCount;
-                state.inventory = inventory;
+                state.inventory = sortedInventory.filter((inv, index) => {
+                    if (index === 0) return true;
+
+                    const previous = sortedInventory[index - 1];
+                    const shouldRemove = previous.isWeapon && twoSlotIds.includes(previous.weaponID);
+                    
+                    if (shouldRemove) return false;
+
+                    return true;
+                });
             }
         });
     }
