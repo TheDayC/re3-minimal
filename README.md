@@ -1,29 +1,27 @@
 # Resident Evil 3 Remake Stream Widget
-A TS / React / Redux application to build Resident Evil 3 Remake stream widgets. Has a minimal look to it at the moment, feel free to fork and add your own design.
+A React application to serve data for Stream Widgets. Designed for RE3R and RE2R but will include other RE games in future as I run them.
 
-## Available Scripts
+## Quick start
 
-In the project directory, you can run:
+Install [Volta](https://volta.sh/) to manage your node versions then clone this repository and navigate into it with your terminal of choice.
 
-### `yarn start`
+### Install all dependencies
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+```bash
+npm install
+```
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+### Create the .env file
 
-### `yarn test`
+Copy the contents of `.env.example` into `.env` and change the `VITE_GAME` variable to either RE3R or RE2R depending on your game of choice. You can also change the `VITE_INVENTORY` variable to `true` or `false` depending on whether you want to show the inventory or not.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Serve the application
 
-### `yarn build`
+```bash
+npm run dev
+```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Set up OBS source
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+In OBS add a new "Browser" source to your scene and put `http://localhost:4000` in the url. This will now display the application in your OBS scene and you can resize it however you like.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.

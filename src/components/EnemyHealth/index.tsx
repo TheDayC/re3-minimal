@@ -14,7 +14,7 @@ const EnemyHealth: React.FC = () => {
         <Flex direction="column" marginTop="12px">
             {enemies.slice(0, 5).map((enemy, i: number) => (
                 <Box key={`enemy-health-${i}`} display="flex" position="relative" width="100%">
-                    <Text position="absolute" top={0} left="calc(50% - 50px)" zIndex={10} font-weight="bold" margin={0} fontSize={14}>
+                    <Text position="absolute" top={0} left="calc(50% - 50px)" zIndex={10} font-weight="bold" margin={0} fontSize={14} color="white">
                         Enemy: {healthPercentage(enemy.CurrentHP, enemy.MaximumHP, 2)}%
                     </Text>
                     <Progress.Root
