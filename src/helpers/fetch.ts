@@ -1,9 +1,6 @@
-import fetch, { RequestInit } from 'node-fetch';
-
-import { IFetchOptions } from '../types/fetch';
-
-function buildRequest(options: IFetchOptions): RequestInit {
-    const requestInit: RequestInit = {
+export async function apiFetch<P>(url: string, options: RequestInit): Promise<P> {
+    // Initialise request
+    const requestInit = {
         body: options.method === 'POST' ? JSON.stringify(options.body) : undefined,
         headers: {
             Accept: 'application/json, text/plain, */*',
@@ -12,13 +9,6 @@ function buildRequest(options: IFetchOptions): RequestInit {
         },
         method: options.method || 'GET'
     };
-
-    return requestInit;
-}
-
-export async function apiFetch<P>(url: string, options: IFetchOptions): Promise<P> {
-    // Initialise request
-    const requestInit = buildRequest(options);
 
     // Fetch a response from path with request params.
     const response = await fetch(url, requestInit);

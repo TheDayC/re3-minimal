@@ -1,10 +1,10 @@
-import { createSelector } from 'reselect';
+import { createSelector } from '@reduxjs/toolkit';
 
 import { selectGameData } from '../../store/slices/game';
 
 const selector = createSelector([selectGameData], game => ({
-    currentHealth: game.currentHealth || 7000,
-    maxHealth: game.maxHealth || 7000
+    currentHealth: game.currentHealth,
+    maxHealth: game.maxHealth
 }));
 
 export default selector;

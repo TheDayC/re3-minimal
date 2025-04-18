@@ -1,8 +1,7 @@
-import React from 'react';
-import { GridItem } from '@chakra-ui/react';
+import { FC } from 'react';
+import { Box, GridItem, Image } from '@chakra-ui/react';
 
-import { selectWeaponImage } from '../../../utils/weapons';
-import './index.css';
+import { selectWeaponImage } from '@/utils/weapons';
 
 interface WeaponProps {
     quantity: number;
@@ -11,11 +10,17 @@ interface WeaponProps {
     colSpan: number;
 }
 
-const Weapon: React.FC<WeaponProps> = ({ quantity, weaponId, attachmentId, colSpan }) => (
-    <GridItem w="100%" h="24" bg="#1d1e1e" color="#ffffff" position="relative" borderRadius="5px" p="1px" border="2px solid #fff" colSpan={colSpan}>
-        <img src={selectWeaponImage(weaponId, attachmentId)} className="weapon" />
-        <div className="quantity">{quantity}</div>
-    </GridItem>
-);
+const Weapon: FC<WeaponProps> = ({ quantity, weaponId, attachmentId, colSpan }) => {
+    const weaponImg = selectWeaponImage(weaponId, attachmentId);
+
+    return (
+        <GridItem w="100%" h="24" bg="#1d1e1e" color="#ffffff" position="relative" borderRadius="5px" p="1px" border="2px solid #fff" colSpan={colSpan}>
+            {weaponImg.length > 0 && <Image src={weaponImg} position="relative" display="block" height="100%" zIndex={10} margin="auto" />}
+            <Box position="absolute" bottom={0} right={0} color="white" z-index={20} padding={5} fontWeight="bold">
+                {quantity}
+            </Box>
+        </GridItem>
+    );
+};
 
 export default Weapon;
