@@ -3,6 +3,8 @@ A React application to serve data for Stream Widgets. Designed for RE3R and RE2R
 
 ## Quick start
 
+Ensure you have the [SRT](https://github.com/SpeedrunTooling/SRTPluginManager) installed and running.
+
 Install [Volta](https://volta.sh/) to manage your node versions then clone this repository and navigate into it with your terminal of choice.
 
 ### Install all dependencies
