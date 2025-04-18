@@ -13,15 +13,14 @@ const Health: React.FC = () => {
 
     return (
         <Box display="flex" position="relative" width="100%">
-            <Text position="absolute" top={3} left="calc(50% - 55px)" zIndex={10} fontWeight="bold">
+            <Text position="absolute" top="calc(50% - 12px)" left="calc(50% - 55px)" zIndex={10} fontWeight="bold" color={theme === 'yellow' ? 'black' : 'white'}>
                 Health: {hp}%
             </Text>
             <Progress.Root colorPalette={theme} value={currentHealth} height="32px" min={0} max={maxHealth} width="100%">
-                <Progress.Track>
+                <Progress.Track height="100%">
                     <Progress.Range />
                 </Progress.Track>
                 <Progress.Label />
-                <Progress.ValueText />
             </Progress.Root>
         </Box>
     );
