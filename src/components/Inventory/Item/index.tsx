@@ -1,8 +1,7 @@
-import React from 'react';
-import { GridItem } from '@chakra-ui/react';
+import { FC } from 'react';
+import { Box, GridItem, Image } from '@chakra-ui/react';
 
 import { selectItemImage } from '../../../utils/items';
-import './index.css';
 
 interface ItemProps {
     quantity: number;
@@ -10,11 +9,17 @@ interface ItemProps {
     colSpan: number;
 }
 
-const Item: React.FC<ItemProps> = ({ itemId, quantity, colSpan }) => (
-    <GridItem w="100%" h="24" bg="#1d1e1e" color="#ffffff" position="relative" borderRadius="5px" p="1px" border="2px solid #fff" colSpan={colSpan}>
-        <img src={selectItemImage(itemId)} className="weapon" />
-        <div className="quantity">{quantity}</div>
-    </GridItem>
-);
+const Item: FC<ItemProps> = ({ itemId, quantity, colSpan }) => {
+    const itemImg = selectItemImage(itemId);
+
+    return (
+        <GridItem w="100%" h="24" bg="#1d1e1e" color="#ffffff" position="relative" borderRadius="5px" p="1px" border="2px solid #fff" colSpan={colSpan}>
+            {itemImg.length > 0 && <Image src={itemImg} display="block" position="relative" height="100%" zIndex={10} margin="auto" />}
+            <Box position="absolute" bottom="0" right="0" color="white" zIndex={20} padding={5} fontWeight="bold">
+                {quantity}
+            </Box>
+        </GridItem>
+    );
+};
 
 export default Item;

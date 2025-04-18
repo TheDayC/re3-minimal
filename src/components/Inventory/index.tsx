@@ -10,7 +10,7 @@ import { twoSlotItems, twoSlotWeapons } from '../../store/slices/game';
 
 const Inventory: React.FC = () => {
     const { inventory } = useSelector(selector);
-    const showInventory = Boolean(process.env.REACT_APP_INVENTORY === 'true');
+    const showInventory = Boolean(import.meta.env.VITE_INVENTORY === 'true');
 
     if (!showInventory || !inventory) {
         return null;
@@ -28,7 +28,15 @@ const Inventory: React.FC = () => {
                 } else if (item.isWeapon) {
                     const currentIsDouble = twoSlotWeapons.includes(item.weaponID);
 
-                    return <Weapon weaponId={item.weaponID} attachmentId={item.attachments} quantity={item.quantity} colSpan={currentIsDouble ? 2 : 1} key={`item-${i}`} />;
+                    return (
+                        <Weapon
+                            weaponId={item.weaponID}
+                            attachmentId={item.attachmentId}
+                            quantity={item.quantity}
+                            colSpan={currentIsDouble ? 2 : 1}
+                            key={`item-${i}`}
+                        />
+                    );
                 }
             })}
         </Grid>

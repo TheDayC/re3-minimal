@@ -1,12 +1,5 @@
-import { EnemyHealth, InventoryItem } from '../../types/game';
+import { z } from 'zod';
 
-export interface GameState {
-    maxHealth: number;
-    currentHealth: number;
-    enemyHealth: EnemyHealth[] | null;
-    lei: number;
-    rank: number;
-    rankScore: number;
-    inventoryCount: number;
-    inventory: InventoryItem[] | null;
-}
+import { GameStateSchema } from '@/utils/schema';
+
+export type GameState = z.infer<typeof GameStateSchema>;

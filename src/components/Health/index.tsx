@@ -1,10 +1,9 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { Progress, Text } from '@chakra-ui/react';
+import { Box, Progress, Text } from '@chakra-ui/react';
 
 import selector from './selector';
 import { healthColor, healthPercentage } from '../../helpers/game';
-import './index.css';
 
 const Health: React.FC = () => {
     const { currentHealth, maxHealth } = useSelector(selector);
@@ -13,10 +12,18 @@ const Health: React.FC = () => {
     const theme = healthColor(hp);
 
     return (
-        <div className="progressWrapper">
-            <Text className="healthLabel">Health: {hp}%</Text>
-            <Progress value={currentHealth || 0} colorScheme={theme} height="32px" isAnimated={true} min={0} max={maxHealth || 1000} className="progressBar" />
-        </div>
+        <Box display="flex" position="relative" width="100%">
+            <Text position="absolute" top={3} left="calc(50% - 55px)" zIndex={10} fontWeight="bold">
+                Health: {hp}%
+            </Text>
+            <Progress.Root colorPalette={theme} value={currentHealth} height="32px" min={0} max={maxHealth} width="100%">
+                <Progress.Track>
+                    <Progress.Range />
+                </Progress.Track>
+                <Progress.Label />
+                <Progress.ValueText />
+            </Progress.Root>
+        </Box>
     );
 };
 
